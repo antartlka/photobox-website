@@ -1,0 +1,178 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body {
+  background-color: #f3caa4;
+}
+
+button {
+  width: 150px;
+}
+
+.camera-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera-preview {
+  margin-bottom: 10px; /* Adds some space between the preview and the button */
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.webcam {
+  border-radius: 8px;
+}
+
+.capture-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.countdown {
+  font-size: 40px;
+  margin: 20px 0;
+}
+
+/* src/index.css or src/App.css */
+body {
+  font-family: "Fugaz One", sans-serif;
+}
+
+.frame-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between frames */
+}
+
+.photo-frame {
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  cursor: pointer;
+}
+
+/* Hover animation effect */
+.photo-frame:hover {
+  transform: translateY(-10px); /* Makes the frame float */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.flash-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.8;
+  z-index: 10;
+  animation: flashAnimation 0.3s ease-out;
+}
+
+@keyframes flashAnimation {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes printAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.printing-effect {
+  position: relative;
+  animation: printAnimation 2.5s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smoother and a bit faster */
+}
+
+.print-container {
+  position: relative;
+  width: 380px; /* Same width as your photo */
+  margin: 20px;
+  overflow: hidden;
+  padding-top: 30px; /* Add some space for the hole */
+}
+
+.print-hole {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px; /* Thickness of the hole */
+  background-color: black;
+  z-index: 10;
+}
+
+.print-photo {
+  position: relative;
+  top: -100%;
+  animation: printAnimation 1.5s ease-out forwards;
+}

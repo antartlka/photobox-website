@@ -1,0 +1,5 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+/* src/index.css or src/App.css */
+body {
+    font-family: 'Fugaz One', sans-serif;
+}
