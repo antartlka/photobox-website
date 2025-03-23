@@ -174,5 +174,6 @@ body {
 .print-photo {
   position: relative;
   top: -100%;
-  animation: printAnimation 1.5s ease-out forwards;
+  animation: printAnimation 1.5s ease-out forwards; 
 }
+

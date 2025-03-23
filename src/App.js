@@ -18,6 +18,7 @@ const SAVE_POSITIONS = [
 ];
 
 const Photobox = () => {
+  // eslint-disable-next-line no-unused-vars
   const [isPrinting, setIsPrinting] = useState(false);
   const shutterSound = useRef(null);
   const [showFlash, setShowFlash] = useState(false);
@@ -84,6 +85,7 @@ const Photobox = () => {
   }, [step]);
   useEffect(() => {
     if (step === 4) {
+      // eslint-disable-next-line no-unused-vars
       const triggerPrintAnimation = () => {
         const printPhoto = document.querySelector(".print-photo");
         if (printPhoto) {
