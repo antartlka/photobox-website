@@ -18,7 +18,6 @@ const SAVE_POSITIONS = [
 ];
 
 const Photobox = () => {
-  // eslint-disable-next-line no-unused-vars
   const [isPrinting, setIsPrinting] = useState(false);
   const shutterSound = useRef(null);
   const [showFlash, setShowFlash] = useState(false);
