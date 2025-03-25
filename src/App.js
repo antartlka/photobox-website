@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import FirstFrame from "./frames/FirstFrame.png";
@@ -102,35 +102,7 @@ const Photobox = () => {
     }
   }, [step]);
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.code === "Space" && step === 3 && !isCapturing) {
-        startCaptureSequence();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [step, isCapturing]);
-
-  const capturePhoto = () => {
-    if (shutterSound.current) {
-      shutterSound.current.play();
-    }
-
-    const canvas = document.createElement("canvas");
-    canvas.width = videoRef.current.videoWidth;
-    canvas.height = videoRef.current.videoHeight;
-    const context = canvas.getContext("2d");
-    context.drawImage(videoRef.current, 0, 0);
-
-    setShowFlash(true);
-    setTimeout(() => setShowFlash(false), 300);
-
-    return canvas.toDataURL("image/png");
-  };
-
-  const startCaptureSequence = () => {
+  const startCaptureSequence = useCallback(() => {
     if (photos.length >= 3) return;
     setIsCapturing(true);
     setCountdown(3);
@@ -153,6 +125,34 @@ const Photobox = () => {
         return prev - 1;
       });
     }, 1000);
+  }, [photos]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.code === "Space" && step === 3 && !isCapturing) {
+        startCaptureSequence();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [step, isCapturing, startCaptureSequence]);
+
+  const capturePhoto = () => {
+    if (shutterSound.current) {
+      shutterSound.current.play();
+    }
+
+    const canvas = document.createElement("canvas");
+    canvas.width = videoRef.current.videoWidth;
+    canvas.height = videoRef.current.videoHeight;
+    const context = canvas.getContext("2d");
+    context.drawImage(videoRef.current, 0, 0);
+
+    setShowFlash(true);
+    setTimeout(() => setShowFlash(false), 300);
+
+    return canvas.toDataURL("image/png");
   };
 
   const handleRetake = () => {
