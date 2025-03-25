@@ -19,6 +19,7 @@ const SAVE_POSITIONS = [
 
 const Photobox = () => {
   const [isPrinting, setIsPrinting] = useState(false);
+  console.log(isPrinting);
   const shutterSound = useRef(null);
   const [showFlash, setShowFlash] = useState(false);
   const [step, setStep] = useState(1);
